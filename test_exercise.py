@@ -1,6 +1,17 @@
 import numpy as np
-import pytest
-from normalized_array import normalized_array  # מייבא את הפונקציה מהקובץ של הסטודנט
+
+def normalized_array(input_array):
+    arr = np.array(input_array, dtype=float)
+    
+    arr_min = np.min(arr)
+    arr_max = np.max(arr)
+    
+    if arr_min == arr_max:
+        return np.zeros_like(arr)
+        
+    new_array = (arr - arr_min) / (arr_max - arr_min)
+    
+    return new_array
 
 def test_basic_normalization():
     data = np.array([10, 20, 30])
